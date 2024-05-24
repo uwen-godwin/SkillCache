@@ -48,6 +48,6 @@ SkillCache is a portfolio platform for tech professionals to showcase their skil
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/SkillCache.git
+   git clone https://github.com/uwen-godwin/SkillCache.git
    cd SkillCache
 
