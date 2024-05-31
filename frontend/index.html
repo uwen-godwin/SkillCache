@@ -3,27 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillCache</title>
+    <title>SkillCache - Showcase Your Tech Skills</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>SkillCache</h1>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
+        <nav id="navbar">
+            <ul class="nav_bar_level1">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <label for="skills_check"><span>Skills</span></label>
+                    <input type="checkbox" id="skills_check" aria-hidden="true">
+                    <ul>
+                        <li><a href="#skills-list">View Skills</a></li>
+                        <li><span onclick="addSkill()">Add Skill</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <label for="projects_check"><span>Projects</span></label>
+                    <input type="checkbox" id="projects_check" aria-hidden="true">
+                    <ul>
+                        <li><a href="#projects-content">View Projects</a></li>
+                        <li><span onclick="filterProjects('all')">All Projects</span></li>
+                        <li><span onclick="filterProjects('category1')">Category 1</span></li>
+                        <li><span onclick="filterProjects('category2')">Category 2</span></li>
+                    </ul>
+                </li>
+                <li><a href="https://github.com/uwen-godwin/SkillCache" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
     </header>
-    <main>
-        <section id="portfolio">
-            <h2>Your Portfolio</h2>
-            <!-- Portfolio content will be loaded here -->
-        </section>
-        <section id="skills">
-            <h2>Your Skills</h2>
-            <!-- Skills content will be loaded here -->
-        </section>
-        <section id="projects">
-            <h2>Your Projects</h2>
-            <!-- Projects content will be loaded here -->
-        </section>
-    </main>
+    
+    <section id="intro">
+        <div class="cover-image">
+            <img src="assets/images/cover.jpg" alt="Cover Image">
+        </div>
+        <h1>SkillCache</h1>
+        <p>Showcase Your Tech Skills and Projects</p>
+        <a href="https://your-deployed-project-url.com" class="button">View the App</a>
+        <div class="store-buttons">
+            <a href="https://play.google.com/store/apps/details?id=your.app.id" class="store-button" target="_blank">
+                <img src="assets/images/google-play-badge.png" alt="Get it on Google Play">
+            </a>
+            <a href="https://apps.apple.com/app/your-app-id" class="store-button" target="_blank">
+                <img src="assets/images/app-store-badge.png" alt="Download on the App Store">
+            </a>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2>Key Features</h2>
+        <div class="feature">
+            <img src="assets/images/feature1.png" alt="Feature 1">
+            <h3>Interactive Portfolios</h3>
+            <p>Create and customize your own tech portfolio.</p>
+        </div>
+        <div class="feature">
+            <img src="assets/images/feature2.png" alt="Feature 2">
+            <h3>Skills Management</h3>
+            <p>Easily add and update your skills.</p>
+        </div>
+        <div class="feature">
+            <img src="assets/images/feature3.png" alt="Feature 3">
+            <h3>Project Showcase</h3>
+            <p>Display your tech projects and achievements.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>SkillCache was inspired by the need for tech professionals to have a dedicated platform to showcase their skills and projects. Our goal is to make it easier for you to create a professional portfolio and connect with potential employers or clients.</p>
+        <p>This project was developed as part of the Holberton School curriculum by:</p>
+        <ul>
+            <li>Godwin Uwen - <a href="https://linkedin.com/in/godwin-uwen" target="_blank">LinkedIn</a> | <a href="https://github.com/godwinuwen" target="_blank">GitHub</a> | <a href="https://twitter.com/godwinuwen" target="_blank">Twitter</a></li>
+            <li>Ayomitan Omotayo - <a href="https://linkedin.com/in/ayomitan-omotayo" target="_blank">LinkedIn</a> | <a href="https://github.com/ayomitan" target="_blank">GitHub</a> | <a href="https://twitter.com/ayomitan" target="_blank">Twitter</a></li>
+        </ul>
+        <p>View the source code on <a href="https://github.com/uwen-godwin/SkillCache" target="_blank">GitHub</a>.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SkillCache. All rights reserved.</p>
+    </footer>
+
+    <div id="portfolio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="portfolio-details"></div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
 </body>
 </html>

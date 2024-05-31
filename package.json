@@ -1,0 +1,27 @@
+{
+  "name": "SkillCache",
+  "version": "1.0.0",
+  "description": "## Description SkillCache is a portfolio platform for tech professionals to showcase their skills and projects. This project includes a frontend built with HTML, CSS, and JavaScript, a backend using Flask, and a PostgreSQL database.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uwen-godwin/SkillCache.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uwen-godwin/SkillCache/issues"
+  },
+  "homepage": "https://github.com/uwen-godwin/SkillCache#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  }
+}
