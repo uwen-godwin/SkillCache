@@ -1,16 +1,22 @@
 from flask import Flask
-from .config import Config
-from .models import db
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_migrate import Migrate
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
-    db.init_app(app)
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/dbname'
 
-    with app.app_context():
-        from .routes import portfolio, skills, projects
-        app.register_blueprint(portfolio.bp)
-        app.register_blueprint(skills.bp)
-        app.register_blueprint(projects.bp)
-        
-        return app
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'auth.login'
+
+from app import models
+from app.routes import api, auth
+
+# Register Blueprints
+app.register_blueprint(api.bp)
+app.register_blueprint(auth.bp)

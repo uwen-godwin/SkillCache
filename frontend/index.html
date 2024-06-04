@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,36 +8,39 @@
 </head>
 <body>
     <header>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
-        <nav id="navbar">
-            <ul class="nav_bar_level1">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li>
-                    <label for="skills_check"><span>Skills</span></label>
-                    <input type="checkbox" id="skills_check" aria-hidden="true">
-                    <ul>
-                        <li><a href="#skills-list">View Skills</a></li>
-                        <li><span onclick="addSkill()">Add Skill</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="projects_check"><span>Projects</span></label>
-                    <input type="checkbox" id="projects_check" aria-hidden="true">
-                    <ul>
-                        <li><a href="#projects-content">View Projects</a></li>
-                        <li><span onclick="filterProjects('all')">All Projects</span></li>
-                        <li><span onclick="filterProjects('category1')">Category 1</span></li>
-                        <li><span onclick="filterProjects('category2')">Category 2</span></li>
-                    </ul>
-                </li>
-                <li><a href="https://github.com/uwen-godwin/SkillCache" target="_blank">GitHub</a></li>
-            </ul>
-        </nav>
+        <div class="mobile_nav" role="navigation" aria-label="Navigate through site content">
+            <label for="main_check" class="main_nav_burger" aria-label="Responsive popup menu">|||</label>
+            <input type="checkbox" id="main_check" name="main_check" class="main_nav_check" aria-hidden="true" tabindex=0>
+            <nav>
+                <ul class="nav_bar_level1">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <label for="second_check"><span>Skills</span></label>
+                        <input type="checkbox" name="second_check" id="second_check" aria-hidden="true">
+                        <ul>
+                            <li><a href="#skills-list">View Skills</a></li>
+                            <li><span onclick="addSkill()">Add Skill</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label for="third_check"><span>Projects</span></label>
+                        <input type="checkbox" name="second_check" id="third_check" aria-hidden="true">
+                        <ul>
+                            <li><a href="#projects-content">View Projects</a></li>
+                            <li><span onclick="filterProjects('all')">All Projects</span></li>
+                            <li><span onclick="filterProjects('category1')">Category 1</span></li>
+                            <li><span onclick="filterProjects('category2')">Category 2</span></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://github.com/uwen-godwin/SkillCache" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    
+
     <section id="intro">
         <div class="cover-image">
             <img src="assets/images/cover.jpg" alt="Cover Image">
@@ -82,7 +85,7 @@
             <li>Godwin Uwen - <a href="https://linkedin.com/in/godwin-uwen" target="_blank">LinkedIn</a> | <a href="https://github.com/godwinuwen" target="_blank">GitHub</a> | <a href="https://twitter.com/godwinuwen" target="_blank">Twitter</a></li>
             <li>Ayomitan Omotayo - <a href="https://linkedin.com/in/ayomitan-omotayo" target="_blank">LinkedIn</a> | <a href="https://github.com/ayomitan" target="_blank">GitHub</a> | <a href="https://twitter.com/ayomitan" target="_blank">Twitter</a></li>
         </ul>
-        <p>View the source code on <a href="https://github.com/uwen-godwin/SkillCache" target="_blank">GitHub</a>.</p>
+        <p>View the source code on <a href="https://github.com/uwen-godwin/SkillCache" target="_blank">GitHub</a></p>
     </section>
 
     <footer>
@@ -97,5 +100,26 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+        // Toggle navigation
+        document.querySelector('.main_nav_burguer').addEventListener('click', function() {
+            document.querySelector('.mobile_nav').classList.toggle('active');
+        });
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('portfolio-modal').style.display = 'none';
+        }
+
+        // Add skill function placeholder
+        function addSkill() {
+            alert('Add Skill functionality coming soon!');
+        }
+
+        // Filter projects function placeholder
+        function filterProjects(category) {
+            alert('Filter Projects by ' + category + ' functionality coming soon!');
+        }
+    </script>
 </body>
 </html>

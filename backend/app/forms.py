@@ -1,17 +1,14 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import Form, StringField, PasswordField, validators
 
-class PortfolioForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    description = TextAreaField('Description', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+class RegistrationForm(Form):
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    email = StringField('Email Address', [validators.Length(min=6, max=35)])
+    password = PasswordField('Password', [
+        validators.DataRequired(),
+        validators.EqualTo('confirm', message='Passwords must match')
+    ])
+    confirm = PasswordField('Repeat Password')
 
-class SkillForm(FlaskForm):
-    skill_name = StringField('Skill Name', validators=[DataRequired()])
-    submit = SubmitField('Submit')
-
-class ProjectForm(FlaskForm):
-    project_name = StringField('Project Name', validators=[DataRequired()])
-    project_description = TextAreaField('Project Description', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+class LoginForm(Form):
+    email = StringField('Email Address', [validators.DataRequired(), validators.Length(min=6, max=35)])
+    password = PasswordField('Password', [validators.DataRequired()])
