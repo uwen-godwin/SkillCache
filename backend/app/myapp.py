@@ -56,7 +56,8 @@ def load_user(user_id):
 # Routes
 @app.route('/')
 def index():
-    return send_from_directory(os.path.join(app.root_path, '../frontend'), 'index.html')
+# return send_from_directory(os.path.join(app.root_path, '../frontend'), 'index.html')
+    return render_template("index.html")
 
 @app.route('/static/<path:path>')
 def static_files(path):

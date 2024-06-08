@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <form method="POST" action="{{ url_for('login') }}">
+    <form method="POST" action="{{ url_for('register') }}">
         {{ form.hidden_tag() }}
+        <div class="form-control">
+            {{ form.username.label }}
+            {{ form.username(class_="form-input") }}
+            {% if form.username.errors %}
+                <small>{{ form.username.errors[0] }}</small>
+            {% endif %}
+        </div>
         <div class="form-control">
             {{ form.email.label }}
             {{ form.email(class_="form-input") }}
@@ -20,6 +27,13 @@
             {{ form.password(class_="form-input") }}
             {% if form.password.errors %}
                 <small>{{ form.password.errors[0] }}</small>
+            {% endif %}
+        </div>
+        <div class="form-control">
+            {{ form.password2.label }}
+            {{ form.password2(class_="form-input") }}
+            {% if form.password2.errors %}
+                <small>{{ form.password2.errors[0] }}</small>
             {% endif %}
         </div>
         <button type="submit">{{ form.submit() }}</button>
