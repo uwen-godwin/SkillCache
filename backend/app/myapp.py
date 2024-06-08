@@ -1,12 +1,13 @@
-from flask import Flask, jsonify, request, render_template, redirect, url_for, flash
+from flask import Flask, jsonify, request, render_template, redirect, url_for, flash, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import os
 import requests
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/dbname'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.sqlite3'
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -44,8 +45,8 @@ class Project(db.Model):
     project_name = db.Column(db.String(80), nullable=False)
     project_description = db.Column(db.String(200), nullable=False)
 
-
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 # User Loader
 @login_manager.user_loader
@@ -53,6 +54,14 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # Routes
+@app.route('/')
+def index():
+    return send_from_directory(os.path.join(app.root_path, '../frontend'), 'index.html')
+
+@app.route('/static/<path:path>')
+def static_files(path):
+    return send_from_directory(os.path.join(app.root_path, '../frontend/static'), path)
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -85,10 +94,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 @app.route('/api/portfolio', methods=['GET', 'POST'])
 def portfolio():

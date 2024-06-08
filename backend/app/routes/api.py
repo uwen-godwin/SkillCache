@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app import db
+from backend.app.database import db
 from app.models import Portfolio, Skill, Project
+import requests
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -61,7 +62,7 @@ def projects():
 @bp.route('/job_search', methods=['POST'])
 def job_search():
     search_params = request.json
-    response = requests.post('https://jobs.github.com/positions.json', params=search_params)
+    response = requests.get('https://jobs.github.com/positions.json', params=search_params)
     return jsonify(response.json())
 
 @bp.route('/user_info', methods=['GET'])
